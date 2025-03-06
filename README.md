@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## AI RESME TO JOB MATCH
 
-## Getting Started
+[1] Created basic form to colect user data with resume
+[2]created resume parser using pdf parse to extract text
+[3]created vectore weviate database to store user details
+[4] created RAG to match most similar resume using job description prompt and extract
+an enhanced response from a LLM .
 
-First, run the development server:
+## HOW TO RUN THE APP
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## N.B: CREATE A .ENV FILE IN THE ROOT DIRECTORY AND ADD THE FOLLOWING:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+WEAVIATE_CLOUD_URL=
+WEAVIATE_API_KEY=
+GEMINI_API_KEY=(not used in the project) optional
+COHERE_API_KEY=
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[1]Install dependencies
+///base/// npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[2]Run the app
+///base/// npm run dev
 
-## Learn More
+## POSTMAN ROUTE CHECK
 
-To learn more about Next.js, take a look at the following resources:
+[1]#use this route to send job description in the following format:
+http://localhost:3000/api/search POST
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+{"jobDescription": "i need a react js developer who knows docker.Experience 2 years minimum"}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[2]#use this route to send user details to the vector db in the following format:
+http://localhost:3000/api/resume-parser POST
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+fill the form and submit to send data to this route . you can check by postman also.
