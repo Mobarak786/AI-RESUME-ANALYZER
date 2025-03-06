@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CandidateForm from "./component/CandidateForm";
+import PageLoader from "./component/Loader";
 
 export default function Home() {
   return (

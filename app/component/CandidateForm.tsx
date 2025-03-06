@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
+import PageLoader from "./Loader";
 
 interface FormData {
   name: string;
@@ -11,6 +12,7 @@ interface FormData {
 }
 
 export default function CandidateForm() {
+  const [loading, setLoading] = useState(false);
   const [resume, setResume] = useState<File | null>();
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -49,6 +51,7 @@ export default function CandidateForm() {
 
     // Send data to the API
     try {
+      setLoading(true);
       const response = await fetch("/api/resume-parser", {
         method: "POST",
         body: data,
@@ -59,6 +62,8 @@ export default function CandidateForm() {
     } catch (error) {
       console.error("Submission Error:", error);
       alert("Failed to submit form.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -194,6 +199,7 @@ export default function CandidateForm() {
           </div>
         </form>
       </div>
+      {loading ? <PageLoader /> : ""}
     </div>
   );
 }

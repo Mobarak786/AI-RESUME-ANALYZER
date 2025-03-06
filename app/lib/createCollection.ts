@@ -17,7 +17,7 @@ export async function createCollection(
       vectorizers: [
         vectorizer.text2VecCohere({
           name: "userDetails",
-          sourceProperties: ["userDetails"],
+          sourceProperties: ["skills", "experience", "education"],
           vectorIndexConfig: configure.vectorIndex.hnsw(),
         }),
       ],

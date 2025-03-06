@@ -75,6 +75,7 @@ export async function POST(req: NextRequest) {
 
     // STORE THE DATA IN VECTOR DB WEAVIATE
     await storeVector({ name, email, linkedin, skills, experience, education });
+   return  NextResponse.json({success:true,response:"Form submitted successsfuly"},{status:201})
   } catch (error) {
     console.error("❌ Server Error:", error);
     return NextResponse.json(
